@@ -10,7 +10,7 @@ import {
   FlatList,
   Image,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { FontAwesome } from '@expo/vector-icons';
 import api from '../../services/api';
 
 import styles from './styles';
@@ -51,6 +51,9 @@ class Main extends Component {
       login: response.data.login,
       avatar: response.data.avatar_url,
       location: response.data.location,
+      id: response.data.id,
+      followers: response.data.followers,
+      public_repos: response.data.public_repos,
     };
 
     this.setState({
@@ -75,7 +78,7 @@ class Main extends Component {
       <View style={styles.container}>
         <ImageBackground source={image} style={styles.image}>
           <View style={styles.header}>
-            <Icon name='github-alt' size={30} color='#fff' />
+            <FontAwesome name='github-alt' size={30} color='#fff' />
             <Text style={styles.headerText}>GithuBusca</Text>
           </View>
 
@@ -100,7 +103,7 @@ class Main extends Component {
                 {loading ? (
                   <ActivityIndicator color='#fff' />
                 ) : (
-                  <Icon name='plus' size={24} color='#fff' />
+                  <FontAwesome name='plus' size={24} color='#fff' />
                 )}
               </TouchableOpacity>
             </View>
