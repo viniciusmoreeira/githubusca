@@ -6,11 +6,13 @@ import {
   TouchableOpacity,
   Text,
   FlatList,
+  Linking,
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import api from '../../services/api';
 
 import styles from './styles';
+import langColors from '../../utils/langColors';
 const image = { uri: 'https://i.imgur.com/mm4PWx8.png' };
 
 export default class User extends Component {
@@ -48,20 +50,25 @@ export default class User extends Component {
             >
               <FontAwesome name='arrow-left' size={22} color='#fff' />
             </TouchableOpacity>
-            <Text style={styles.headerText}>{user.name}</Text>
+            <Text style={styles.headerTitle}>{user.name}</Text>
             <FontAwesome name='github-alt' size={30} color='#fff' />
           </View>
 
-          <View style={styles.user}>
-            <Image source={{ uri: user.avatar }} style={styles.avatar}></Image>
-            <Text style={styles.username}>{user.login}</Text>
-            <Text style={styles.location}>{user.location}</Text>
-            <Text style={styles.id}>Id: {user.id}</Text>
-            <Text style={styles.followers}>Seguidores: {user.followers}</Text>
-            <Text style={styles.repos}>Repositórios: {user.public_repos}</Text>
+          <View style={styles.wrapper}>
+            <Image source={{ uri: user.avatar }} style={styles.avatar} />
+
+            <View style={styles.user}>
+              <Text style={styles.userInfo}>{user.login}</Text>
+              <Text style={styles.userInfo}>{user.location}</Text>
+              <Text style={styles.userInfo}>Id: {user.id}</Text>
+              <Text style={styles.userInfo}>Seguidores: {user.followers}</Text>
+              <Text style={styles.userInfo}>
+                Repositórios: {user.public_repos}
+              </Text>
+            </View>
           </View>
 
-          <Text style={styles.headerText}>Repositórios</Text>
+          <Text style={styles.reposListTitle}>Repositórios</Text>
 
           <FlatList
             style={styles.reposList}
@@ -69,20 +76,49 @@ export default class User extends Component {
             data={repos}
             keyExtractor={(repo) => String(repo.id)}
             renderItem={({ item }) => (
-              <View style={styles.user}>
-                <Text style={styles.name}>{item.name}</Text>
-                <Text style={styles.name}>{item.description}</Text>
-                <Text style={styles.username}>{item.language}</Text>
-                <Text style={styles.location}>{item.stargazers_count}</Text>
-                <Text style={styles.location}>
-                  Criado em{' '}
-                  {new Date(item.created_at).toLocaleDateString('pt-BR')}
-                </Text>
-                <Text style={styles.location}>
-                  Último update:{' '}
-                  {new Date(item.updated_at).toLocaleDateString('pt-BR')}
-                </Text>
-              </View>
+              <TouchableOpacity
+                onPress={() => {
+                  Linking.openURL(`${item.html_url}`);
+                }}
+              >
+                <View style={styles.repo}>
+                  <Text style={styles.repoName}>{item.name}</Text>
+                  <Text style={styles.description} numberOfLines={2}>
+                    {item.description}
+                  </Text>
+
+                  <View style={styles.stats}>
+                    <View
+                      style={{
+                        backgroundColor: langColors[item.language],
+                        padding: 5,
+                        borderRadius: 4,
+                        alignSelf: 'center',
+                      }}
+                    >
+                      <Text>{item.language}</Text>
+                    </View>
+
+                    <View style={styles.stars}>
+                      <FontAwesome name='star' size={22} color='#F9D38D' />
+                      <Text style={styles.starsNumbers}>
+                        {item.stargazers_count}
+                      </Text>
+                    </View>
+                  </View>
+
+                  <View style={styles.dates}>
+                    <Text style={styles.created}>
+                      Criado em:{' '}
+                      {new Date(item.created_at).toLocaleDateString('pt-BR')}
+                    </Text>
+                    <Text style={styles.updated}>
+                      Último update:{' '}
+                      {new Date(item.updated_at).toLocaleDateString('pt-BR')}
+                    </Text>
+                  </View>
+                </View>
+              </TouchableOpacity>
             )}
           />
         </ImageBackground>

@@ -3,18 +3,18 @@ import { Keyboard, ActivityIndicator } from 'react-native';
 import { AsyncStorage } from 'react-native';
 import {
   View,
+  Image,
   ImageBackground,
   Text,
   TextInput,
   TouchableOpacity,
   FlatList,
-  Image,
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import api from '../../services/api';
+const image = { uri: 'https://i.imgur.com/mm4PWx8.png' };
 
 import styles from './styles';
-const image = { uri: 'https://i.imgur.com/mm4PWx8.png' };
 
 class Main extends Component {
   state = {
@@ -65,6 +65,14 @@ class Main extends Component {
     Keyboard.dismiss();
   };
 
+  clearAllUsers() {
+    AsyncStorage.clear();
+
+    this.setState({
+      users: '',
+    });
+  }
+
   handleNavigate = (user) => {
     const { navigation } = this.props;
 
@@ -108,6 +116,12 @@ class Main extends Component {
               </TouchableOpacity>
             </View>
           </View>
+          <TouchableOpacity
+            style={styles.clearButton}
+            onPress={() => this.clearAllUsers()}
+          >
+            <Text style={styles.clearButtonText}>Limpar usuários</Text>
+          </TouchableOpacity>
 
           <FlatList
             style={styles.usersList}

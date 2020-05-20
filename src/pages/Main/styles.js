@@ -24,7 +24,8 @@ export default StyleSheet.create({
   main: {
     alignItems: 'center',
     backgroundColor: 'rgba(10, 10, 10, 1)',
-    margin: 30,
+    marginTop: 30,
+    marginHorizontal: 30,
     padding: 20,
     borderRadius: 8,
   },
@@ -52,13 +53,26 @@ export default StyleSheet.create({
     backgroundColor: 'rgba(10, 10, 10, 1)',
     marginLeft: 15,
   },
+  clearButton: {
+    backgroundColor: '#dc4747',
+    marginTop: 10,
+    marginHorizontal: 30,
+    padding: 5,
+    borderRadius: 4,
+    alignSelf: 'flex-end',
+  },
+  clearButtonText: {
+    color: '#fff',
+    textAlign: 'center',
+  },
 
   usersList: {
-    marginTop: 20,
+    marginTop: 10,
   },
   user: {
     alignItems: 'center',
-    margin: 30,
+    marginHorizontal: 30,
+    marginVertical: 10,
     padding: 20,
     backgroundColor: 'rgba(10, 10, 10, 1)',
     borderRadius: 8,
@@ -70,10 +84,10 @@ export default StyleSheet.create({
     backgroundColor: '#eee',
   },
   name: {
-    fontSize: 14,
+    fontSize: 16,
     color: '#fff',
     fontWeight: 'bold',
-    marginTop: 4,
+    marginTop: 5,
     textAlign: 'center',
   },
   username: {
@@ -98,7 +112,7 @@ export default StyleSheet.create({
     height: 36,
   },
   profileButtonText: {
-    fontSize: 14,
+    fontSize: 13,
     color: '#fff',
     textTransform: 'uppercase',
   },

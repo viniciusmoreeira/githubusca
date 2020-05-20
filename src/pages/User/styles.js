@@ -17,74 +17,101 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     marginHorizontal: 30,
   },
-  headerText: {
+  headerTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
-    marginTop: 10,
-    textAlign: 'center',
   },
 
-  user: {
+  wrapper: {
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-evenly',
     margin: 30,
-    padding: 20,
+    padding: 15,
     backgroundColor: 'rgba(10, 10, 10, 1)',
     borderRadius: 8,
   },
+  user: {
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
   avatar: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
     backgroundColor: '#eee',
   },
-  name: {
-    fontSize: 14,
-    color: '#fff',
-    fontWeight: 'bold',
-    marginTop: 4,
-    textAlign: 'center',
-  },
   username: {
+    fontSize: 14,
     color: '#999',
-    fontSize: 13,
-    lineHeight: 18,
-    marginTop: 5,
-    textAlign: 'center',
   },
   location: {
     color: '#999',
-    fontSize: 13,
-    lineHeight: 18,
+    fontSize: 14,
     marginTop: 5,
-    textAlign: 'center',
   },
-  id: {
+  userInfo: {
     color: '#999',
     fontSize: 13,
-    lineHeight: 18,
     marginTop: 5,
+  },
+
+  reposListTitle: {
+    fontSize: 18,
+    color: '#fff',
+    fontWeight: 'bold',
     textAlign: 'center',
   },
-  followers: {
-    color: '#999',
+  reposList: {
     fontSize: 13,
     lineHeight: 18,
-    marginTop: 5,
+    margin: 30,
     textAlign: 'center',
   },
-  following: {
-    color: '#999',
-    fontSize: 13,
-    lineHeight: 18,
-    marginTop: 5,
+  repo: {
+    backgroundColor: 'rgba(10, 10, 10, 1)',
+    marginBottom: 20,
+    borderRadius: 8,
+    padding: 15,
+  },
+  repoName: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: 'bold',
     textAlign: 'center',
   },
-  repos: {
-    color: '#999',
-    fontSize: 13,
-    lineHeight: 18,
-    marginTop: 5,
+  description: {
+    fontSize: 14,
     textAlign: 'center',
+    color: '#999',
+    margin: 10,
+  },
+  stats: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    paddingHorizontal: 40,
+  },
+  stars: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  starsNumbers: {
+    color: '#fff',
+    fontSize: 14,
+    marginLeft: 5,
+  },
+  dates: {
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    marginTop: 10,
+  },
+  created: {
+    color: '#999',
+    margin: 5,
+  },
+  updated: {
+    color: '#999',
   },
 });
