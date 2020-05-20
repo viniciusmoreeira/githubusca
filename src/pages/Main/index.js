@@ -125,22 +125,22 @@ class Main extends Component {
 
           <FlatList
             style={styles.usersList}
-            showsVerticalScrollIndicator='false'
+            showsVerticalScrollIndicator={false}
             data={users}
-            keyExtractor={(user) => user.login}
-            renderItem={({ item }) => (
+            keyExtractor={(user) => String(user.login)}
+            renderItem={({ item: user }) => (
               <View style={styles.user}>
                 <Image
-                  source={{ uri: item.avatar }}
+                  source={{ uri: user.avatar }}
                   style={styles.avatar}
                 ></Image>
-                <Text style={styles.name}>{item.name}</Text>
-                <Text style={styles.username}>{item.login}</Text>
-                <Text style={styles.location}>{item.location}</Text>
+                <Text style={styles.name}>{user.name}</Text>
+                <Text style={styles.username}>{user.login}</Text>
+                <Text style={styles.location}>{user.location}</Text>
 
                 <TouchableOpacity
                   style={styles.profileButton}
-                  onPress={() => this.handleNavigate(item)}
+                  onPress={() => this.handleNavigate(user)}
                 >
                   <Text style={styles.profileButtonText}>Ver perfil</Text>
                 </TouchableOpacity>

@@ -10,10 +10,10 @@ import {
 } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import api from '../../services/api';
+const image = { uri: 'https://i.imgur.com/mm4PWx8.png' };
 
 import styles from './styles';
 import langColors from '../../utils/langColors';
-const image = { uri: 'https://i.imgur.com/mm4PWx8.png' };
 
 export default class User extends Component {
   state = {
@@ -72,7 +72,7 @@ export default class User extends Component {
 
           <FlatList
             style={styles.reposList}
-            showsVerticalScrollIndicator='false'
+            showsVerticalScrollIndicator={false}
             data={repos}
             keyExtractor={(repo) => String(repo.id)}
             renderItem={({ item }) => (
